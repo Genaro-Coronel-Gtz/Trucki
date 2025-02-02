@@ -4,12 +4,12 @@ extends CharacterBody2D
 var speed = 100
 var counter = 0
 var minimap_camera
+var active_quest = null
 
 @onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
 @onready var speed_label = $"../HUD/SpeedLabel"
 @export var quest_system: Node  # Referencia al sistema de misiones
-var active_quest = null
-
+@onready var ui_scene_path = "res://ui.tscn"
 
 func assign_quest(quest_id):
 	if quest_system == null:
@@ -56,7 +56,7 @@ func _ready():
 	minimap_camera = get_node_or_null("../CanvasLayer/SubViewportContainer/SubViewport/Camera2D")
 	if minimap_camera == null:
 		print("⚠️ ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
-	assign_quest("m2")
+	assign_quest("m3")
 
 func updateStats():
 	if speed_label:
@@ -68,10 +68,16 @@ func _process(delta):
 	check_mission_start()
 	check_mission_complete()
 
-
+func loadui():
+	var ui_scene = load(ui_scene_path)
+	if ui_scene_path:
+		get_tree().change_scene_to_packed(ui_scene)
+		
 func _physics_process(delta):
 	# Entrada del jugador
 	var direction = Vector2.ZERO
+	if Input.is_action_pressed("ui_show"):
+		loadui()
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 		counter += 1 
@@ -106,4 +112,5 @@ func _physics_process(delta):
 		# Actualiza la posición del Sprite2D en el minimapa
 	if minimap_player:
 		minimap_player.position = position
+		minimap_player.rotation = direction.angle()
 	updateStats()

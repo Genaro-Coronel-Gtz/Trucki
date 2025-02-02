@@ -60,7 +60,7 @@ func check_all_quests_completed():
 
 # 🔍 Marcar zonas en el mapa
 func mark_zone(pos, color):
-	print("mark zone", pos , color)
+	# print("mark zone", pos , color)
 	if pos == null:
 		print("⚠️ Intento de marcar una zona con posición nula")
 		return

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://b4a11n8mr8b0s"]
+[gd_scene load_steps=13 format=4 uid="uid://b4a11n8mr8b0s"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_1jo18"]
 [ext_resource type="TileSet" uid="uid://bar8wstnqhvwk" path="res://high_way_tmap.tres" id="1_3tk2d"]
 [ext_resource type="Script" path="res://scripts/quest_system.gd" id="1_msgts"]
 [ext_resource type="Script" path="res://canvas_layer.gd" id="1_pl5ej"]
@@ -7,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://dvjcy50bnkl8k" path="res://Place_layer_tmap.tres" id="3_bupew"]
 [ext_resource type="Script" path="res://player.gd" id="4_eivpa"]
 [ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://Truck_04.png" id="5_gig77"]
+[ext_resource type="Texture2D" uid="uid://qxapbg5ea5n8" path="res://Arrow_01.png" id="6_42cqt"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="7_q4quq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noins"]
@@ -15,6 +17,7 @@ size = Vector2(16, 14)
 [sub_resource type="LabelSettings" id="LabelSettings_la75r"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_1jo18")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_pl5ej")
@@ -50,7 +53,7 @@ tile_set = ExtResource("2_avm3b")
 collision_enabled = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-texture = ExtResource("5_gig77")
+texture = ExtResource("6_42cqt")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 zoom = Vector2(0.5, 0.5)

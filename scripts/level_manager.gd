@@ -27,8 +27,7 @@ var levels = [
 	}
 ]
 
-
-var current_level_index = 0  # Índice del nivel actual
+var current_level_index = 1  # Índice del nivel actual
 
 func _ready():
 	load_level(current_level_index)  # Carga el primer nivel al iniciar el juego
