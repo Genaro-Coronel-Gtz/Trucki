@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b4a11n8mr8b0s"]
+[gd_scene load_steps=27 format=4 uid="uid://b4a11n8mr8b0s"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1jo18"]
 [ext_resource type="TileSet" uid="uid://bar8wstnqhvwk" path="res://high_way_tmap.tres" id="1_3tk2d"]
@@ -11,9 +11,94 @@
 [ext_resource type="Texture2D" uid="uid://qxapbg5ea5n8" path="res://Arrow_01.png" id="6_42cqt"]
 [ext_resource type="Script" path="res://DrawLineMinimap.gd" id="7_fvm6o"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="7_q4quq"]
+[ext_resource type="Texture2D" uid="uid://dvwche3s4n4u" path="res://Marker_01.png" id="8_738gg"]
+[ext_resource type="Texture2D" uid="uid://b16rw4of0hcu5" path="res://Marker_02.png" id="9_cg2s0"]
+[ext_resource type="Texture2D" uid="uid://bfm1cok72th3r" path="res://Truck.png" id="12_0u6yl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noins"]
 size = Vector2(16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy1tb"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt00j"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf7fe"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crauf"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybkfx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy1tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt00j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf7fe")
+}],
+"loop": true,
+"name": &"drive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crauf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suiiu"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocik7"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo13h"]
+atlas = ExtResource("12_0u6yl")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dua2t"]
+atlas = ExtResource("5_gig77")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yj424"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suiiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocik7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo13h")
+}],
+"loop": true,
+"name": &"drive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dua2t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_la75r"]
 
@@ -62,8 +147,8 @@ drag_horizontal_offset = -0.69
 
 [node name="PathLineMinimap" type="Line2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 script = ExtResource("7_fvm6o")
-start_texture = ExtResource("6_42cqt")
-end_texture = ExtResource("6_42cqt")
+start_texture = ExtResource("8_738gg")
+end_texture = ExtResource("9_cg2s0")
 
 [node name="GrassLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -95,12 +180,26 @@ zoom = Vector2(2.5, 2.5)
 rotation_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("5_gig77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_noins")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ybkfx")
+animation = &"drive"
+frame_progress = 0.222066
+
+[node name="TruckBox" type="AnimatedSprite2D" parent="CharacterBody2D"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_yj424")
+animation = &"drive"
+frame = 2
+frame_progress = 0.890674
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
