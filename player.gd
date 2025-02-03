@@ -5,7 +5,7 @@ var speed = 100
 var counter = 0
 var minimap_camera
 var active_quest = null
-const POSITION_CAMERA_OFFSET_X = 40
+const POSITION_CAMERA_OFFSET_X = 50
 
 @onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
 @onready var speed_label = $"../HUD/SpeedLabel"

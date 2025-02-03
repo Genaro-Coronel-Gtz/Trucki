@@ -58,12 +58,15 @@ collision_enabled = false
 texture = ExtResource("6_42cqt")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+scale = Vector2(200, 200)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 drag_horizontal_offset = -0.69
 
 [node name="PathLineMinimap" type="Line2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 script = ExtResource("7_fvm6o")
-start_texture = ExtResource("6_42cqt")
-end_texture = ExtResource("6_42cqt")
 
 [node name="GrassLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
