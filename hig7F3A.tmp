@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b4a11n8mr8b0s"]
+[gd_scene load_steps=13 format=4 uid="uid://b4a11n8mr8b0s"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1jo18"]
 [ext_resource type="TileSet" uid="uid://bar8wstnqhvwk" path="res://high_way_tmap.tres" id="1_3tk2d"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://player.gd" id="4_eivpa"]
 [ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://Truck_04.png" id="5_gig77"]
 [ext_resource type="Texture2D" uid="uid://qxapbg5ea5n8" path="res://Arrow_01.png" id="6_42cqt"]
-[ext_resource type="Script" path="res://DrawLineMinimap.gd" id="7_fvm6o"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="7_q4quq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noins"]
@@ -24,16 +23,15 @@ script = ExtResource("1_1jo18")
 script = ExtResource("1_pl5ej")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_right = 300.0
+offset_right = 200.0
 offset_bottom = 200.0
-
-[node name="BorderLine" type="Line2D" parent="CanvasLayer/SubViewportContainer"]
-scale = Vector2(1.40936, 1.51514)
+scale = Vector2(0.709542, 0.660006)
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 disable_3d = true
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(300, 200)
+size = Vector2i(200, 200)
 render_target_update_mode = 4
 
 [node name="HighWayLayerMinimap" type="TileMapLayer" parent="CanvasLayer/SubViewportContainer/SubViewport"]
@@ -58,15 +56,9 @@ collision_enabled = false
 texture = ExtResource("6_42cqt")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-scale = Vector2(200, 200)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_horizontal_offset = -0.69
-
-[node name="PathLineMinimap" type="Line2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
-script = ExtResource("7_fvm6o")
 
 [node name="GrassLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -92,6 +84,7 @@ script = ExtResource("4_eivpa")
 quest_system = NodePath("../QuestSystem")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(9.53674e-07, 0)
 rotation = -0.611038
 zoom = Vector2(2.5, 2.5)

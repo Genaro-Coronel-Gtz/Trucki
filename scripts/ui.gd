@@ -10,6 +10,7 @@ extends Panel
 @onready var info_label = $Label2  # El label para mostrar la información del nivel seleccionado
 @onready var ui_scene_path = "res://ui.tscn"
 
+
 var selected_level = {}  # Diccionario vacío para almacenar el nivel seleccionado
 
 func _ready():
@@ -28,21 +29,14 @@ func create_level_buttons():
 		print(" Level ", level)
 		var button = Button.new()
 		button.text = level["name"]  # Asumimos que "name" es el nombre del nivel
-		#button.connect("pressed", _on_level_button_pressed, [level])
 		button.connect("pressed",Callable(self,"_start_level").bind(level))
 		levels_container.add_child(button)
 
 func _start_level(level):
 	print(" iniciar nivel ", level)
+	selected_level = level
+	info_label.text = "Nivel seleccinado: " + selected_level["name"]
+	print("Nivel seleccionado:", selected_level["name"])
 	var ui_scene = preload("res://high_way_tmap.tscn")
 	if ui_scene:
 		get_tree().change_scene_to_packed(ui_scene)
-
-# Función que se ejecuta cuando un botón de nivel es presionado
-func _on_level_button_pressed(level):
-	# Al seleccionar un nivel, lo guardamos en selected_level
-	selected_level = level
-	info_label.text = "Nivel seleccionado: " + selected_level["name"]  # Mostrar el nombre del nivel
-	print("Nivel seleccionado:", selected_level["name"])
-	
-	# Aquí puedes agregar código para cargar el nivel o hacer otras acciones

@@ -8,8 +8,8 @@ var levels = [
 	{
 		"id": 1,
 		"name": "Bosque Encantado",
-		"start_position": Vector2(100, 200),
-		"end_position": Vector2(200, 200),
+		"start_position": Vector2(500, 200),
+		"end_position": Vector2(500, 1000),
 		"missions": [
 			{"id": "m1", "title": "Encuentra el amuleto", "description": "Busca el amuleto escondido."},
 			{"id": "m2", "title": "Derrota al guardián", "description": "Elimina al guardián del bosque."}
@@ -18,8 +18,8 @@ var levels = [
 	{
 		"id": 2,
 		"name": "Cueva Oscura",
-		"start_position": Vector2(500, 100),
-		"end_position": Vector2(100, 300),
+		"start_position": Vector2(-50, 10),
+		"end_position": Vector2(650, -200),
 		"missions": [
 			{"id": "m3", "title": "Recolecta gemas", "description": "Encuentra 5 gemas en la cueva."},
 			{"id": "m4", "title": "Escapa antes del derrumbe", "description": "Llega a la salida antes de que se derrumbe."}

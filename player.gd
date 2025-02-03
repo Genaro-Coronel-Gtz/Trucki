@@ -5,6 +5,7 @@ var speed = 100
 var counter = 0
 var minimap_camera
 var active_quest = null
+const POSITION_CAMERA_OFFSET_X = 40
 
 @onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
 @onready var speed_label = $"../HUD/SpeedLabel"
@@ -35,7 +36,7 @@ func check_mission_start():
 	var start_pos = active_quest["start_pos"]
 
 	if player_pos.distance_to(start_pos) < 20:  # Ajusta el radio de detección
-		print("🎯 Misión iniciada:", active_quest["title"])
+		# print("🎯 Misión iniciada:", active_quest["title"])
 		active_quest["state"] = "in_progress"
 
 # ✅ Revisar si el jugador llegó a la zona de fin
@@ -61,7 +62,6 @@ func _ready():
 func updateStats():
 	if speed_label:
 		speed_label.text = "Velocidad: " + str(speed)
-		
 
 # En el _process del QuestSystem
 func _process(delta):
@@ -108,7 +108,9 @@ func _physics_process(delta):
 		rotation = direction.angle()  # Gira el sprite según el ángulo del movimiento
 		
 	if minimap_camera:
-		minimap_camera.position = position
+		# minimap_camera.position = position
+		minimap_camera.position.x = position.x + POSITION_CAMERA_OFFSET_X
+		minimap_camera.position.y = position.y
 		# Actualiza la posición del Sprite2D en el minimapa
 	if minimap_player:
 		minimap_player.position = position

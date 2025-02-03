@@ -3,7 +3,6 @@ extends Node
 signal quest_updated(quest_id: String, new_state: String)
 signal all_quests_completed
 
-@export var tilemap: TileMap  # Referencia al TileMap si usas tiles
 var start_markers = []  # Lista para marcar zonas de inicio
 var end_markers = []  # Lista para marcar zonas de fin
 
