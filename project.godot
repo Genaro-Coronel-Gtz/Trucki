@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="TruckDelivery"
-run/main_scene="res://high_way_tmap.tscn"
+run/main_scene="res://scenes/HUD.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
+GameData="*res://scripts/GameData.gd"
 
 [input]
 
@@ -26,6 +31,11 @@ ui_show_map={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+ui_show_main_menu={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -34,6 +44,7 @@ ui_show_map={
 2d_physics/layer_2="HighwayTerrains"
 2d_physics/layer_3="GrassTerrain"
 2d_physics/layer_4="PlaceTerrain"
+2d_physics/layer_5="Animals"
 
 [rendering]
 

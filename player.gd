@@ -1,21 +1,21 @@
 extends CharacterBody2D
 
-# Velocidad del jugador
+@onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
+@export var quest_system: Node  # Referencia al sistema de misiones
+@onready var truck_animated = $AnimatedSprite2D
+@onready var truck_box_anim = $TruckBox
+
+@onready var area2d = $Area2D 
+@onready var current_animation: AnimatedSprite2D = null
+
 var speed = 100
+var health = 100
+
 var counter = 0
 var minimap_camera
 var active_quest = null
 const POSITION_CAMERA_OFFSET_X = 50
 const INITIAL_POSITION: Vector2 = Vector2(100, 100)
-
-@onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
-@onready var speed_label = $"../HUD/SpeedLabel"
-@export var quest_system: Node  # Referencia al sistema de misiones
-@onready var ui_scene_path = "res://ui.tscn"
-@onready var truck_animated = $AnimatedSprite2D
-@onready var truck_box_anim = $TruckBox
-
-@onready var current_animation: AnimatedSprite2D = null
 
 func assign_quest(quest_id):
 	if quest_system == null:
@@ -71,6 +71,8 @@ func _active_animation(animation):
 		current_animation = truck_box_anim
 
 func _ready():
+	print("instancia de player", self)
+	area2d.body_entered.connect(_on_body_entered)
 	_active_animation("single")
 	
 	call_deferred("set_position", INITIAL_POSITION)
@@ -81,26 +83,38 @@ func _ready():
 	if minimap_camera == null:
 		print("⚠️ ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
 	assign_quest("m3")
+	
+func _on_body_entered(body):
+	if body.is_in_group("Animals"):
+		take_damage(5)
+		print(" Colision detectada con animal", body.animal_type)
+
+func take_damage(damage: int):
+	health -= damage
+	if health <= 0:
+		print(" El jugador ha muerto")
+		GameState.change_state(GameState.State.MAIN_MENU)
 
 func updateStats():
-	if speed_label:
-		speed_label.text = "Velocidad: " + str(speed)
+	var stats: Dictionary = {
+		"health": health,
+		"speed": speed,
+		"position": global_position
+	}
+	GameData.set_stats(stats)
 
 # En el _process del QuestSystem
 func _process(delta):
 	check_mission_start()
 	check_mission_complete()
 
-func loadui():
-	var ui_scene = load(ui_scene_path)
-	if ui_scene_path:
-		get_tree().change_scene_to_packed(ui_scene)
-		
 func _physics_process(delta):
 	# Entrada del jugador
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("ui_show"):
-		loadui()
+		GameState.change_state(GameState.State.MAIN_MENU)
+	if Input.is_action_pressed("ui_show_main_menu"):
+		GameState.change_state(GameState.State.PAUSED)
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 		counter += 1 

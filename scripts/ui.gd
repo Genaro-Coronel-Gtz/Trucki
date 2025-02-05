@@ -9,31 +9,40 @@ extends Panel
 @onready var levels_container = $VBoxContainer  # El contenedor de los botones
 @onready var info_label = $Label2  # El label para mostrar la información del nivel seleccionado
 @onready var ui_scene_path = "res://ui.tscn"
+@onready var saveBtn = $SaveData
 
 
 var selected_level = {}  # Diccionario vacío para almacenar el nivel seleccionado
 
 func _ready():
 	# Crear botones dinámicamente en base a levels_data
+	saveBtn.connect("pressed", Callable(self, "_save_data"))
 	create_level_buttons()
+	
+func _save_data() -> void:
+	GameData.save_game()
 	
 # Función para crear los botones de niveles
 func create_level_buttons():
 	# Limpiar los botones existentes
-	print(" levels container ", )
 	for button in levels_container.get_children():
 		button.queue_free()  # Eliminar los botones previos
 
 	# Crear un botón por cada nivel
 	for level in levels_data:
-		print(" Level ", level)
 		var button = Button.new()
 		button.text = level["name"]  # Asumimos que "name" es el nombre del nivel
-		button.connect("pressed",Callable(self,"_start_level").bind(level))
+		#button.connect("pressed",Callable(self,"_start_level").bind(level))
+		button.connect("pressed",Callable(self,"_play_game").bind(level))
 		levels_container.add_child(button)
+		
+func _play_game(level):
+	print("play game started")
+	if GameState:
+		GameState.change_state(GameState.State.PLAYING)
 
 func _start_level(level):
-	print(" iniciar nivel ", level)
+	#print(" iniciar nivel ", level)
 	selected_level = level
 	info_label.text = "Nivel seleccinado: " + selected_level["name"]
 	print("Nivel seleccionado:", selected_level["name"])

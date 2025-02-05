@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bitysw88axyx6"]
+
+[ext_resource type="Script" path="res://animal_sprite.gd" id="1_m4bdi"]
+[ext_resource type="Texture2D" uid="uid://xd32d3pcqeus" path="res://Pig_01.png" id="1_p2si5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meiib"]
+atlas = ExtResource("1_p2si5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkf4u"]
+atlas = ExtResource("1_p2si5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f575q"]
+atlas = ExtResource("1_p2si5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kluyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meiib")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkf4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f575q")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbdwc"]
+size = Vector2(8, 6)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_m4bdi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kluyd")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_xbdwc")

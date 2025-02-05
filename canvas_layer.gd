@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var camera = $SubViewportContainer/SubViewport/Camera2D
 
 func _ready() -> void:
+	print(" se ejecuta ready en canvas layer")
 	camera.zoom = Vector2(0.8, 0.8)
 	var screen_size = get_viewport().get_visible_rect().size
 	viewportContainer.position = Vector2(screen_size.x - viewportContainer.size.x, screen_size.y - viewportContainer.size.y)
