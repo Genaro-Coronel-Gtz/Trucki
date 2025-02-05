@@ -12,7 +12,8 @@ enum State {
 	PAUSED,
 	SHOP,
 	GAME_OVER,
-	LOADING
+	LOADING,
+	RESUME
 }
 
 func _ready():

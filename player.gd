@@ -113,8 +113,8 @@ func _physics_process(delta):
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("ui_show"):
 		GameState.change_state(GameState.State.MAIN_MENU)
-	if Input.is_action_pressed("ui_show_main_menu"):
-		GameState.change_state(GameState.State.PAUSED)
+	if Input.is_action_pressed("ui_cancel"):
+		GameState.change_state(GameState.State.PAUSED) #Menu pausa
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 		counter += 1 

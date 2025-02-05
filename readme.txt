@@ -10,11 +10,13 @@ y no con :
 				if is_inside_tree():
 				get_tree().change_scene_to_packed(game_scene)
 
+* Falta agregar el SaveManager con archivos .json (Guardar tambien la ubicacion del player, y los niveles que se han pasados) ->ok 
 
+* Verificar por que se sigue mostrando el minimapa cuando se muestra el menu pause, pero cuando
+	el main menu se muestra si se oculta correctamente el minimapa. (puede ser cuestion de capas ,zindex, o de
+	alguna logica revisar primero hud.gd y ui.gd)
 * Implementar el state machine para las animaciones, etc..
 
-
-* Falta agregar el SaveManager con archivos .json (Guardar tambien la ubicacion del player, y los niveles pasados)
 * Implementar un tema para la interfaz (Desde el gestor de temas)
 * Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
 
