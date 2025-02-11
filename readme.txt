@@ -14,13 +14,23 @@ y no con :
 
 * Verificar por que se sigue mostrando el minimapa cuando se muestra el menu pause, pero cuando
 	el main menu se muestra si se oculta correctamente el minimapa. (puede ser cuestion de capas ,zindex, o de
-	alguna logica revisar primero hud.gd y ui.gd)
-* Implementar el state machine para las animaciones, etc..
+	alguna logica revisar primero hud.gd y ui.gd) -> ok
+	
+* Implementar el state machine para las animaciones, etc.. -> ok
+* Implementar enums globales -> ok
+
+
+------------------------------------------------------------------------------------
+Tratar de avanzar el 11 de Frebrero de 2025
 
 * Implementar un tema para la interfaz (Desde el gestor de temas)
-* Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
+* Crear bien la interfaz grafica para el juego (HUD)
+
+----------------------------------------------------------------------------------------
 
 * Implementar varios tipos de animales (Ver si se crearan en escenas separadas, etc)
+* Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
+
 * Cambiar el player a una escena
 
 * Agregar los tiles para pintar bien los cruces de calles en el mapa
@@ -29,7 +39,7 @@ y no con :
 * Agregar edificios al mapa
 
 * Crear bien el mapa completo del mundo
-* Crear bien la interfaz grafica para el juego (HUD)
+
 
 * Fix por que no se pinta la ruta en el minimapa al iniciarlo.
 * Fix de movimientos de animales

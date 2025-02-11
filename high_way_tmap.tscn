@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b4a11n8mr8b0s"]
+[gd_scene load_steps=28 format=4 uid="uid://b4a11n8mr8b0s"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1jo18"]
 [ext_resource type="TileSet" uid="uid://bar8wstnqhvwk" path="res://high_way_tmap.tres" id="1_3tk2d"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="7_q4quq"]
 [ext_resource type="Texture2D" uid="uid://dvwche3s4n4u" path="res://Marker_01.png" id="8_738gg"]
 [ext_resource type="Texture2D" uid="uid://b16rw4of0hcu5" path="res://Marker_02.png" id="9_cg2s0"]
+[ext_resource type="Script" path="res://scripts/animation_state_machine.gd" id="11_f3pu2"]
 [ext_resource type="Texture2D" uid="uid://bfm1cok72th3r" path="res://Truck.png" id="12_0u6yl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noins"]
@@ -173,6 +174,9 @@ collision_enabled = false
 collision_mask = 12
 script = ExtResource("4_eivpa")
 quest_system = NodePath("../QuestSystem")
+
+[node name="AnimationStateMachine" type="Node" parent="CharacterBody2D"]
+script = ExtResource("11_f3pu2")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(9.53674e-07, 0)

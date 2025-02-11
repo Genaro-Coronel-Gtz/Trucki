@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 @onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
-@export var quest_system: Node  # Referencia al sistema de misiones
+@export var quest_system: Node
 @onready var truck_animated = $AnimatedSprite2D
 @onready var truck_box_anim = $TruckBox
 
 @onready var area2d = $Area2D 
-@onready var current_animation: AnimatedSprite2D = null
+@onready var animation_state_machine: Node = $AnimationStateMachine
 
 var speed = 100
 var health = 100
@@ -16,6 +16,8 @@ var minimap_camera
 var active_quest = null
 const POSITION_CAMERA_OFFSET_X = 50
 const INITIAL_POSITION: Vector2 = Vector2(100, 100)
+
+const State = preload("res://scripts/game_enums.gd").State
 
 func assign_quest(quest_id):
 	if quest_system == null:
@@ -44,7 +46,7 @@ func check_mission_start():
 	if player_pos.distance_to(start_pos) < 20:  # Ajusta el radio de detección
 		# print("🎯 Misión iniciada:", active_quest["title"])
 		active_quest["state"] = "in_progress"
-		_active_animation("box")
+		animation_state_machine.change_state(State.BOX)
 
 # ✅ Revisar si el jugador llegó a la zona de fin
 func check_mission_complete():
@@ -58,22 +60,12 @@ func check_mission_complete():
 		print("🏁 Misión completada:", active_quest["title"])
 		quest_system.complete_quest(active_quest["id"])
 		active_quest = null  # Liberar misión activa
-		_active_animation("single")
-
-func _active_animation(animation):
-	if animation == "single":
-		truck_box_anim.hide()
-		truck_animated.show()
-		current_animation = truck_animated
-	else:
-		truck_box_anim.show()
-		truck_animated.hide()
-		current_animation = truck_box_anim
+		animation_state_machine.change_state(State.SINGLE)
 
 func _ready():
-	print("instancia de player", self)
+	# print("instancia de player", self)
 	area2d.body_entered.connect(_on_body_entered)
-	_active_animation("single")
+	animation_state_machine.change_state(State.SINGLE)
 	
 	call_deferred("set_position", INITIAL_POSITION)
 	
@@ -81,7 +73,7 @@ func _ready():
 	
 	minimap_camera = get_node_or_null("../CanvasLayer/SubViewportContainer/SubViewport/Camera2D")
 	if minimap_camera == null:
-		print("⚠️ ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
+		print("ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
 	assign_quest("m3")
 	
 func _on_body_entered(body):
@@ -140,9 +132,9 @@ func _physics_process(delta):
 	velocity = direction * speed
 	
 	if velocity.length() != 0:
-		current_animation.play("drive")
+		animation_state_machine.change_state(State.DRIVE)
 	else:
-		current_animation.play("idle")
+		animation_state_machine.change_state(State.IDLE)
 	
 	move_and_slide()
 
