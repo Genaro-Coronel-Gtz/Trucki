@@ -5,8 +5,11 @@ extends CanvasLayer
 @onready var border = $SubViewportContainer/BorderLine
 @onready var camera = $SubViewportContainer/SubViewport/Camera2D
 
+var show_minimap: bool = false
+
 func _ready() -> void:
-	print(" se ejecuta ready en canvas layer")
+	GameState.game_paused.connect(_on_game_paused)
+	viewportContainer.visible = show_minimap
 	camera.zoom = Vector2(0.8, 0.8)
 	var screen_size = get_viewport().get_visible_rect().size
 	viewportContainer.position = Vector2(screen_size.x - viewportContainer.size.x, screen_size.y - viewportContainer.size.y)
@@ -36,5 +39,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_show_map"):
 		if viewportContainer.visible:
 			viewportContainer.hide()
+			show_minimap = false
 		else:
+			show_minimap = true
 			viewportContainer.show()
+
+func _on_game_paused(paused):
+	if !paused:
+		#print(" si no esta pausado ", paused)
+		print(" show minimap ", show_minimap)
+		if show_minimap:
+			viewportContainer.show()
+		else:
+			viewportContainer.hide()
+	else:
+		viewportContainer.hide()

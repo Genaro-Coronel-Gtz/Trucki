@@ -85,7 +85,7 @@ func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
 		print(" El jugador ha muerto")
-		GameState.change_state(GameState.State.MAIN_MENU)
+		GameState.change_state(GameState.HState.MAIN_MENU)
 
 func updateStats():
 	var stats: Dictionary = {
@@ -99,14 +99,14 @@ func updateStats():
 func _process(delta):
 	check_mission_start()
 	check_mission_complete()
-
+	
 func _physics_process(delta):
 	# Entrada del jugador
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("ui_show"):
-		GameState.change_state(GameState.State.MAIN_MENU)
+		GameState.change_state(GameState.HState.MAIN_MENU)
 	if Input.is_action_pressed("ui_cancel"):
-		GameState.change_state(GameState.State.PAUSED) #Menu pausa
+		GameState.change_state(GameState.HState.PAUSED) #Menu pausa
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 		counter += 1 

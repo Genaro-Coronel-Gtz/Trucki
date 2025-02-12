@@ -16,7 +16,7 @@ func _ready():
 	main_menu.visible = false
 	
 	game_scene = preload("res://high_way_tmap.tscn")
-	game_instance = game_scene.instantiate()
+	# game_instance = game_scene.instantiate()
 	
 	if GameState:
 		GameState.connect("state_changed", Callable(self, "_on_state_changed"))
@@ -38,12 +38,10 @@ func _on_state_changed(new_state: int):
 			if is_inside_tree():
 				get_tree().paused = false
 				get_tree().change_scene_to_packed(game_scene)
-			else: 
-				print(" este nodo ya no esta en el arbol de escenas")
 		GameState.HState.PAUSED:
+			main_menu.visible = false
 			default_view.visible = false
 			shop.visible = false
-			main_menu.visible = false
 			pause_menu.visible = true
 			if is_inside_tree():
 				get_tree().paused = true

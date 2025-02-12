@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://uwmkqclvyefi"]
+[gd_scene load_steps=8 format=3 uid="uid://uwmkqclvyefi"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_aqfdd"]
+[ext_resource type="Theme" uid="uid://p366em87j2bw" path="res://themes/game_theme.tres" id="2_gst7q"]
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="2_hskto"]
 [ext_resource type="Script" path="res://scripts/defautl_view.gd" id="3_5afj5"]
 [ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://Truck_04.png" id="3_b50aq"]
@@ -9,6 +10,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_0psi5"]
 
 [node name="HUD" type="Node2D"]
+visible = false
 script = ExtResource("1_aqfdd")
 
 [node name="DefautlView" type="Control" parent="."]
@@ -50,10 +52,12 @@ offset_right = 1153.0
 offset_bottom = 648.0
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="MainMenu"]
 offset_right = 1151.0
 offset_bottom = 647.0
+theme = ExtResource("2_gst7q")
 script = ExtResource("3_h77hq")
 
 [node name="Label2" type="Label" parent="MainMenu/Panel"]
@@ -104,19 +108,21 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1158.0
 offset_bottom = 652.0
+theme = ExtResource("2_gst7q")
 
 [node name="PauseMenuCLayer" type="CanvasLayer" parent="PauseMenu"]
 
 [node name="Panel" type="Panel" parent="PauseMenu/PauseMenuCLayer"]
 offset_right = 1160.0
 offset_bottom = 645.0
+theme = ExtResource("2_gst7q")
 script = ExtResource("2_hskto")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu/PauseMenuCLayer/Panel"]
 layout_mode = 0
 offset_right = 1154.0
 offset_bottom = 645.0
-color = Color(0.391381, 0.391381, 0.391381, 1)
+color = Color(0.14699, 0.14699, 0.14699, 1)
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/PauseMenuCLayer/Panel"]
 layout_mode = 2
@@ -143,6 +149,7 @@ offset_bottom = 432.0
 text = "Menu principal"
 
 [node name="Truck04" type="Sprite2D" parent="PauseMenu/PauseMenuCLayer/Panel"]
+visible = false
 position = Vector2(762.75, 291.5)
 rotation = 3.13507
 scale = Vector2(7.90625, 8.3125)

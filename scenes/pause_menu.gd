@@ -11,14 +11,13 @@ func _ready():
 	resumeBtn.connect("pressed", Callable(self, "_resume_game"))
 	mainMenuBtn.connect("pressed", Callable(self, "_main_menu"))
 
-
 func _resume_game() -> void:
 	if GameState:
-		GameState.change_state(GameState.State.RESUME)
-	
+		GameState.change_state(GameState.HState.RESUME)
+		
 func _save_data() -> void:
 	GameData.save_game()
 	
 func _main_menu() -> void:
 	if GameState:
-		GameState.change_state(GameState.State.MAIN_MENU)
+		GameState.change_state(GameState.HState.MAIN_MENU)

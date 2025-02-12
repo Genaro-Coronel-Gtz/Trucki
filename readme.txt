@@ -23,9 +23,9 @@ y no con :
 ------------------------------------------------------------------------------------
 Tratar de avanzar el 11 de Frebrero de 2025
 
-* Cambiar el enum de GameState a global_state e importarlo en GameState
+* Cambiar el enum de GameState a global_state e importarlo en GameState -> ok
 
-* Implementar un tema para la interfaz (Desde el gestor de temas)
+* Implementar un tema para la interfaz (Desde el gestor de temas) 
 * Crear bien la interfaz grafica para el juego (HUD)
 
 ----------------------------------------------------------------------------------------

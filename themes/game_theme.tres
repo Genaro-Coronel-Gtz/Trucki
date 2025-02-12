@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://p366em87j2bw"]
+
+[ext_resource type="StyleBox" uid="uid://cyqjs78c3r36" path="res://themes/normal_style.tres" id="1_r3ld1"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ptgu"]
+color = Color(0.857516, 0.549256, 0.927686, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 0.646532, 0.329011, 1)
+Button/colors/font_hover_color = Color(0.839433, 0.635028, 0.336908, 1)
+Button/font_sizes/font_size = 18
+Button/styles/disabled = SubResource("StyleBoxLine_8ptgu")
+Button/styles/hover = ExtResource("1_r3ld1")
+Button/styles/normal = ExtResource("1_r3ld1")
