@@ -27,12 +27,19 @@ Tratar de avanzar el 11 de Frebrero de 2025
 
 * Implementar un tema para la interfaz (Desde el gestor de temas) -> ok
 * Agregar fuente personalizada -> ok
-* Crear bien la interfaz grafica para el juego (HUD)
+* Crear bien la interfaz grafica para el juego (HUD) -> Ok
 
 -------------------------------------------------------------------------------------------
 * Crear sistema de dialogos Generico (Ver si se puede exportar como plugin)
 * Crear dialogos del juego 
 
+* Implementar logica para guardar en menu pausa antes de salir a menu principal:
+	En menu pausa, si el usuario da click en el boton menu principal
+	-> Mostrar un dialogo que le diga que debe guardar primero el avance
+	-> No acepta:
+		no se le dejara avanzar al menu principal (no hacer nada, solo cerrar dialogo)
+	-> Si acepta:
+		Guardar el estado del juego, nivel, recompenzas, etc... y pasar a menu principal
 ----------------------------------------------------------------------------------------
 
 * Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
@@ -46,7 +53,13 @@ Se guardara todo en un archivo .cfg
 
 ---------------------------------------------------------------------------------------
 
+Agregar objetos para recojer y sean recompenzas 
+
+
+----------------------------------------------------------------------------------------
+
 Fix de sistema de niveles y misiones
+
 
 ---------------------------------------------------------------------------------------
 
