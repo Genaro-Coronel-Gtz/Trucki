@@ -58,7 +58,9 @@ Agregar objetos para recojer y sean recompenzas
 
 ----------------------------------------------------------------------------------------
 
-Fix de sistema de niveles y misiones
+Fix de sistema de niveles y misiones (Ver si podemos cargar los niveles y misiones
+base desde un archivo .json , pero los avances de misiones, status del jugador, etc. 
+iran en un archivo .cfg )
 
 
 ---------------------------------------------------------------------------------------
