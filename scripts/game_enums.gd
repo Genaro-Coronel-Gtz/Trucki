@@ -13,5 +13,18 @@ class State:
 		BOX
 	}
 
+class HudState:
+	enum {
+		MAIN_MENU,
+		PLAYING,
+		PAUSED,
+		SHOP,
+		GAME_OVER,
+		LOADING,
+		RESUME
+	}
+
+
 class PlayerAnimation:
 	pass
+	

@@ -25,7 +25,7 @@ func _ready():
 
 func _resume_game() -> void:
 	if GameState:
-		GameState.change_state(GameState.State.RESUME)
+		GameState.change_state(GameState.HState.RESUME)
 	
 func _save_data() -> void:
 	GameData.save_game()
@@ -51,7 +51,7 @@ func _quit_game() -> void:
 func _play_game(level):
 	print("play game started")
 	if GameState:
-		GameState.change_state(GameState.State.PLAYING)
+		GameState.change_state(GameState.HState.PLAYING)
 
 func _start_level(level):
 	#print(" iniciar nivel ", level)

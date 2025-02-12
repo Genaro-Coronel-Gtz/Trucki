@@ -24,13 +24,13 @@ func _ready():
 # Manejo de visibilidad de UI según el estado del juego
 func _on_state_changed(new_state: int):
 	match new_state:
-		GameState.State.MAIN_MENU:
+		GameState.HState.MAIN_MENU:
 			main_menu.visible = true
 			default_view.visible = false
 			shop.visible = false
 			pause_menu.visible = false
 			get_tree().paused = true
-		GameState.State.PLAYING:
+		GameState.HState.PLAYING:
 			main_menu.visible = false
 			shop.visible = false
 			pause_menu.visible = false
@@ -40,16 +40,16 @@ func _on_state_changed(new_state: int):
 				get_tree().change_scene_to_packed(game_scene)
 			else: 
 				print(" este nodo ya no esta en el arbol de escenas")
-		GameState.State.PAUSED:
+		GameState.HState.PAUSED:
 			default_view.visible = false
 			shop.visible = false
 			main_menu.visible = false
 			pause_menu.visible = true
 			if is_inside_tree():
 				get_tree().paused = true
-		GameState.State.SHOP:
+		GameState.HState.SHOP:
 			shop.visible = true
-		GameState.State.RESUME:
+		GameState.HState.RESUME:
 			main_menu.visible = false
 			shop.visible = false
 			pause_menu.visible = false
