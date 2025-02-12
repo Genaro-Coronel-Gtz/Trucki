@@ -25,21 +25,19 @@ Tratar de avanzar el 11 de Frebrero de 2025
 
 * Cambiar el enum de GameState a global_state e importarlo en GameState -> ok
 
-* Implementar un tema para la interfaz (Desde el gestor de temas) 
+* Implementar un tema para la interfaz (Desde el gestor de temas) -> ok
+* Agregar fuente personalizada -> ok
 * Crear bien la interfaz grafica para el juego (HUD)
+
+-------------------------------------------------------------------------------------------
+* Crear sistema de dialogos Generico (Ver si se puede exportar como plugin)
+* Crear dialogos del juego 
 
 ----------------------------------------------------------------------------------------
 
-* Implementar varios tipos de animales (Ver si se crearan en escenas separadas, etc)
 * Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
-
+* Implementar varios tipos de animales (Ver si se crearan en escenas separadas, etc)
 * Cambiar el player a una escena
-
-
--------------------------------------------------------------------------------------------
-
-Crear sistema de dialogos Generico (Ver si se puede exportar como plugin)
-Crear dialogos del juego 
 
 -----------------------------------------------------------------------------------------
 Crear sistema de mapeo de entradas (teclado, joystick, etc) 

@@ -46,8 +46,6 @@ func _process(delta: float) -> void:
 
 func _on_game_paused(paused):
 	if !paused:
-		#print(" si no esta pausado ", paused)
-		print(" show minimap ", show_minimap)
 		if show_minimap:
 			viewportContainer.show()
 		else:

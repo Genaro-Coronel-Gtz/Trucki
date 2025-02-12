@@ -5,30 +5,39 @@ extends Panel
 	{ "name": "Cueva Oscura", "start_position": Vector2(50, 300), "end_position": Vector2(600, 300) },
 	{ "name": "Montañas Nevadas", "start_position": Vector2(200, 500), "end_position": Vector2(700, 500) }
 ]
+
 @export var LevelManager: Node
 @onready var levels_container = $VBoxContainer  # El contenedor de los botones
 @onready var info_label = $Label2  # El label para mostrar la información del nivel seleccionado
 @onready var ui_scene_path = "res://ui.tscn"
-@onready var saveBtn = $SaveData
+
 @onready var resumeBtn = $Resume
 @onready var exitBtn = $Quit
 
-
 var selected_level = {}  # Diccionario vacío para almacenar el nivel seleccionado
+var is_game_paused: bool = false
+
+func _render_buttons():
+	# saveBtn.visible = is_game_paused
+	resumeBtn.visible = is_game_paused
+	exitBtn.visible = is_game_paused
 
 func _ready():
 	# Crear botones dinámicamente en base a levels_data
-	saveBtn.connect("pressed", Callable(self, "_save_data"))
 	resumeBtn.connect("pressed", Callable(self, "_resume_game"))
 	exitBtn.connect("pressed", Callable(self, "_quit_game"))
-	create_level_buttons()	
+	GameState.game_paused.connect(_on_game_paused)
+	levels_container.add_theme_constant_override("separation", 20) # Agregar separacion entre botones
+	create_level_buttons()
+	_render_buttons()
+
+func _on_game_paused(paused):
+	is_game_paused = paused
+	_render_buttons()
 
 func _resume_game() -> void:
 	if GameState:
 		GameState.change_state(GameState.HState.RESUME)
-	
-func _save_data() -> void:
-	GameData.save_game()
 	
 # Función para crear los botones de niveles
 func create_level_buttons():
@@ -40,8 +49,8 @@ func create_level_buttons():
 	for level in levels_data:
 		var button = Button.new()
 		button.text = level["name"]  # Asumimos que "name" es el nombre del nivel
-		#button.connect("pressed",Callable(self,"_start_level").bind(level))
 		button.connect("pressed",Callable(self,"_play_game").bind(level))
+		button.custom_minimum_size = Vector2(300, 58)
 		levels_container.add_child(button)
 
 func _quit_game() -> void:
@@ -49,15 +58,5 @@ func _quit_game() -> void:
 		get_tree().quit
 
 func _play_game(level):
-	print("play game started")
 	if GameState:
 		GameState.change_state(GameState.HState.PLAYING)
-
-func _start_level(level):
-	#print(" iniciar nivel ", level)
-	selected_level = level
-	info_label.text = "Nivel seleccinado: " + selected_level["name"]
-	print("Nivel seleccionado:", selected_level["name"])
-	var ui_scene = preload("res://high_way_tmap.tscn")
-	if ui_scene:
-		get_tree().change_scene_to_packed(ui_scene)
