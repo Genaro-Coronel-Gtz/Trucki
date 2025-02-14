@@ -33,6 +33,7 @@ Tratar de avanzar el 11 de Frebrero de 2025
 * Crear sistema de dialogos Generico (Ver si se puede exportar como plugin)
 * Crear dialogos del juego 
 
+
 * Implementar logica para guardar en menu pausa antes de salir a menu principal:
 	En menu pausa, si el usuario da click en el boton menu principal
 	-> Mostrar un dialogo que le diga que debe guardar primero el avance
@@ -40,6 +41,13 @@ Tratar de avanzar el 11 de Frebrero de 2025
 		no se le dejara avanzar al menu principal (no hacer nada, solo cerrar dialogo)
 	-> Si acepta:
 		Guardar el estado del juego, nivel, recompenzas, etc... y pasar a menu principal
+----------------------------------------------------------------------------------------
+
+* Verificar si la escena high_way_tmap se puede cargar directamente (arrastrando ) 
+dentro de la misma escena que HUD, Como se hizo con Dialogue UI, y si se puede
+como seria para poder mter tambien el player en una escena, ver si no habira problemas con que
+una escena este dentro de otra escena que esta dentro de otra escena.
+
 ----------------------------------------------------------------------------------------
 
 * Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi

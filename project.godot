@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 GameState="*res://scripts/GameState.gd"
 GameData="*res://scripts/GameData.gd"
+DialogueManager="*res://scripts/DialogueManager.gd"
 
 [input]
 

@@ -21,19 +21,23 @@ const State = preload("res://scripts/game_enums.gd").State
 
 func assign_quest(quest_id):
 	if quest_system == null:
-		print("⚠️ QuestSystem no está asignado en el Player")
+		print("QuestSystem no está asignado en el Player")
 		return
 	
 	# Iterar sobre las misiones activas
 	for quest in quest_system.active_quests:
 		if quest["id"] == quest_id:
 			active_quest = quest
-			print("📜 Nueva misión asignada:", active_quest["title"])
+			print("Nueva mision asignada:", active_quest["title"])
 			return  # Terminar la función después de asignar la misión
 		 
 	# Si no encontramos la misión
-	print("⚠️ Misión no encontrada:", quest_id)
+	print("Mision no encontrada:", quest_id)
 
+func _start_mission():
+	print("Mision iniciada:", active_quest["title"])
+	active_quest["state"] = "in_progress"
+	animation_state_machine.change_state(State.BOX)
 
 # 🚀 Revisar si el jugador está en la zona de inicio
 func check_mission_start():
@@ -42,13 +46,12 @@ func check_mission_start():
 
 	var player_pos = position
 	var start_pos = active_quest["start_pos"]
+	# Ajusta el radio de detección y si no ha iniciado la mision
+	if player_pos.distance_to(start_pos) < 20 and active_quest["state"] =="not_started":
+		DialogueManager.start_dialogue("start_game")
+		#DialogueManager.start_dialogue("test_dialogue")
 
-	if player_pos.distance_to(start_pos) < 20:  # Ajusta el radio de detección
-		# print("🎯 Misión iniciada:", active_quest["title"])
-		active_quest["state"] = "in_progress"
-		animation_state_machine.change_state(State.BOX)
-
-# ✅ Revisar si el jugador llegó a la zona de fin
+# Revisar si el jugador llegó a la zona de fin
 func check_mission_complete():
 	if active_quest == null:
 		return
@@ -57,13 +60,13 @@ func check_mission_complete():
 	var end_pos = active_quest["end_pos"]
 
 	if player_pos.distance_to(end_pos) < 20:
-		print("🏁 Misión completada:", active_quest["title"])
+		print("-- Misión completada:", active_quest["title"])
 		quest_system.complete_quest(active_quest["id"])
 		active_quest = null  # Liberar misión activa
 		animation_state_machine.change_state(State.SINGLE)
 
 func _ready():
-	# print("instancia de player", self)
+	DialogueManager.start_mission.connect(_start_mission)
 	area2d.body_entered.connect(_on_body_entered)
 	animation_state_machine.change_state(State.SINGLE)
 	

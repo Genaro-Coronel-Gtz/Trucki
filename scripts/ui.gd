@@ -18,7 +18,6 @@ var selected_level = {}  # Diccionario vacío para almacenar el nivel selecciona
 var is_game_paused: bool = false
 
 func _render_buttons():
-	# saveBtn.visible = is_game_paused
 	resumeBtn.visible = is_game_paused
 	exitBtn.visible = is_game_paused
 

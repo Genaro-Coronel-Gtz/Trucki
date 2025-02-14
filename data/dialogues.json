@@ -1,0 +1,24 @@
+{
+  "start_game": {
+	"text": "El camion ha sido cargado",
+	"options": [
+	  { "text": "ok!", "next": "", "action": "start_game" },
+	]
+  },
+  "test_dialogue": {
+	"text": "El camion ha sido cargado"
+  },
+  "intro_1": {
+	"text": "Bienvenido al juego. ¿Estás listo para la aventura?",
+	"options": [
+	  { "text": "Sí, vamos!", "next": "intro_2", "action": "start_game" },
+	  { "text": "No, aún no.", "next": "", "action": "cancel" }
+	]
+  },
+  "intro_2": {
+	"text": "Perfecto, comenzaremos en el bosque encantado.",
+	"options": [
+	  { "text": "¡Vamos allá!", "next": "", "action": "start_forest" }
+	]
+  }
+}

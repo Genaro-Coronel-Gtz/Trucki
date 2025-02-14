@@ -21,7 +21,9 @@ class HudState:
 		SHOP,
 		GAME_OVER,
 		LOADING,
-		RESUME
+		RESUME,
+		DIALOGUE_OPEN,
+		DIALOGUE_CLOSE
 	}
 
 

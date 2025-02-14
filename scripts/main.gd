@@ -7,7 +7,6 @@ extends Node2D
 var animal_escena = preload("res://Animal.tscn")
 
 func _ready():
-	print(" se ejecuta ready de main")
 	generar_animalitos()
 
 func generar_animalitos():
