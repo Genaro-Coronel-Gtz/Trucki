@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bitysw88axyx6"]
 
-[ext_resource type="Script" path="res://animal_sprite.gd" id="1_m4bdi"]
+[ext_resource type="Script" path="res://scripts/animal_sprite.gd" id="1_m4bdi"]
 [ext_resource type="Texture2D" uid="uid://xd32d3pcqeus" path="res://Pig_01.png" id="1_p2si5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_meiib"]

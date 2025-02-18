@@ -24,7 +24,6 @@ func pause_scene(pause: bool):
 	if not currentScene:
 		return
 	
-	#$SceneContainer/Main.visible = false
 	if pause:
 		currentScene.process_mode = Node.PROCESS_MODE_DISABLED
 	else:
@@ -54,7 +53,7 @@ func _on_state_changed(new_state: int):
 			main_menu.visible = false
 			pause_menu.visible = false
 			controlSettings.visible = false
-			load_scene("res://high_way_tmap.tscn")
+			load_scene("res://scenes/Game.tscn")
 		GameState.HState.PAUSED:
 			controlSettings.visible = false
 			main_menu.visible = false

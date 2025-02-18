@@ -2,7 +2,7 @@ extends Node
 
 signal stats_changed(new_stats: Dictionary)
 
-const SAVE_PATH = "res://savegame.json"
+const SAVE_PATH = "res://data/savegame.json"
 
 var player_position: Vector2 = Vector2(0, 0)
 

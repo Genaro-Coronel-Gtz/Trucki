@@ -1,11 +1,11 @@
 extends Node
 
-const CONFIG_FILE := "res://input_settings.cfg"
+const CONFIG_FILE := "res://data/input_settings.cfg"
 
 var input_bindings: Dictionary = {}
 var is_from_load: bool = true
 
-# 🔹 Definimos los valores por defecto
+# vlores por defecto
 var DEFAULT_BINDINGS := {
 	"ui_up": InputEventKey.new(),
 	"ui_left": InputEventKey.new(),
@@ -85,7 +85,7 @@ func deserialize_event(event_data: String) -> InputEvent:
 	return null
 
 
-# 🔹 Verificar si el archivo de configuración existe y crearlo con valores por defecto si no
+#  Verificar si el archivo de configuración existe y crearlo con valores por defecto si no
 func ensure_config_exists():
 	print(" ensure configure exists")
 	var config := ConfigFile.new()

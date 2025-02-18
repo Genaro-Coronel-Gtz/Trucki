@@ -4,10 +4,9 @@ extends Node2D
 @export var area_spawn_min := Vector2(650, -8)  # Límite inferior del spawn
 @export var area_spawn_max := Vector2(700, 37)  # Límite superior del spawn
 
-var animal_escena = preload("res://Animal.tscn")
+var animal_escena = preload("res://scenes/Animal.tscn")
 
 func _ready():
-	# print(" carga ready de main")
 	generar_animalitos()
 
 
