@@ -15,45 +15,44 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Panel" type="Panel"]
-offset_right = 1160.0
-offset_bottom = 647.0
+[node name="ControlSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 theme = ExtResource("1_krfdx")
 script = ExtResource("1_8gq3f")
 
-[node name="ActionList" type="OptionButton" parent="."]
-layout_mode = 2
-offset_left = 269.0
-offset_top = 118.0
-offset_right = 485.0
-offset_bottom = 171.0
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1163.0
+offset_bottom = 649.0
 
-[node name="WaitingLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 628.0
-offset_top = 128.0
-offset_right = 818.0
-offset_bottom = 166.0
+[node name="ActionList" type="OptionButton" parent="Panel"]
+offset_left = 274.0
+offset_top = 120.0
+offset_right = 490.0
+offset_bottom = 173.0
+
+[node name="WaitingLabel" type="Label" parent="Panel"]
+offset_left = 626.0
+offset_top = 126.0
+offset_right = 816.0
+offset_bottom = 164.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ch218")
 
-[node name="AssignButton" type="Button" parent="."]
-layout_mode = 2
+[node name="AssignButton" type="Button" parent="Panel"]
 offset_left = 247.0
 offset_top = 477.0
 offset_right = 481.0
 offset_bottom = 532.0
 text = "Asignar"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="Label" type="Label" parent="Panel"]
 offset_left = 328.0
 offset_top = 30.0
 offset_right = 551.0
 offset_bottom = 72.0
 text = "Configuracion de controles"
 
-[node name="back" type="Button" parent="."]
-layout_mode = 0
+[node name="back" type="Button" parent="Panel"]
 offset_left = 564.0
 offset_top = 472.0
 offset_right = 787.0

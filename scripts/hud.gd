@@ -1,78 +1,79 @@
 extends Node
 
-@onready var default_view = $DefautlView/HUD #Renombrar a stats_player_ui o algo asi
+@onready var stats_widget = $StatsWidget/HUD
 @onready var pause_menu = $PauseMenu/PauseMenuCLayer
-@onready var shop = $ShopMenu
 @onready var main_menu: CanvasLayer = $MainMenu
 @onready var dialogue_ui: CanvasLayer = $DialogueUI
+@onready var sceneContainer: Node = $SceneContainer
+@onready var controlSettings: Control = $ControlSettings
 
-var game_scene : PackedScene
-var controls_scene: PackedScene
-var gscene
+var currentScene
 
 func _ready():
-	#print(" carga ready de hud")
 	process_mode = Node.PROCESS_MODE_ALWAYS  # Permite que la UI funcione en pausa
-	default_view.visible = false
+	stats_widget.visible = false
 	pause_menu.visible = false
-	shop.visible = false
-	dialogue_ui.visible = true
+	dialogue_ui.visible = false
 	main_menu.visible = true
-	
-	game_scene = preload("res://high_way_tmap.tscn")
-	controls_scene = preload("res://control_settings.tscn")
-	
-	gscene = load("res://high_way_tmap.tscn")
+	controlSettings.visible = false
 	
 	if GameState:
 		GameState.connect("state_changed", Callable(self, "_on_state_changed"))
 	
-func _pause(pause: bool):
-	if is_inside_tree():
-		get_tree().paused = pause
+func pause_scene(pause: bool):
+	if not currentScene:
+		return
+	
+	#currentScene.visible = false
+	if pause:
+		currentScene.process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		currentScene.process_mode = Node.PROCESS_MODE_INHERIT
+	
+
+func load_scene(nScene):
+	if currentScene:
+		currentScene.queue_free()
+		
+	var newScene = load(nScene).instantiate()
+	sceneContainer.add_child(newScene)
+	currentScene = newScene
 	
 # Manejo de visibilidad de UI según el estado del juego
 func _on_state_changed(new_state: int):
 	match new_state:
 		GameState.HState.MAIN_MENU:
 			main_menu.visible = true
-			default_view.visible = false
-			shop.visible = false
+			stats_widget.visible = false
 			pause_menu.visible = false
-			get_tree().paused = true
+			controlSettings.visible = false
+			pause_scene(true)
+			#get_tree().paused = true
 		GameState.HState.PLAYING:
-			default_view.visible = true
+			stats_widget.visible = true
 			main_menu.visible = false
-			shop.visible = false
 			pause_menu.visible = false
-			if is_inside_tree():
-				get_tree().paused = false
-				get_tree().change_scene_to_packed(game_scene)
+			controlSettings.visible = false
+			load_scene("res://high_way_tmap.tscn")
 		GameState.HState.PAUSED:
+			controlSettings.visible = false
 			main_menu.visible = false
-			default_view.visible = false
-			shop.visible = false
+			stats_widget.visible = false
 			pause_menu.visible = true
-			_pause(true)
-		GameState.HState.SHOP:
-			shop.visible = true
+			pause_scene(true)
 		GameState.HState.RESUME:
+			pause_scene(false)
+			stats_widget.visible = true
 			main_menu.visible = false
-			shop.visible = false
 			pause_menu.visible = false
-			default_view.visible = true
-			_pause(false)
+			controlSettings.visible = false
 		GameState.HState.DIALOGUE_OPEN:
-			print(" dialogue open --- hud.gd")
-			_pause(true)
+			pause_scene(true)
 		GameState.HState.DIALOGUE_CLOSE:
-			_pause(false)
+			pause_scene(false)
 		GameState.HState.CONTROLS_OPEN:
+			pause_scene(true)
+			controlSettings.visible = true
 			main_menu.visible = false
-			shop.visible = false
 			pause_menu.visible = false
-			default_view.visible = false
-			if is_inside_tree():
-				get_tree().paused = true
-				get_tree().change_scene_to_packed(controls_scene)
-			
+			stats_widget.visible = false

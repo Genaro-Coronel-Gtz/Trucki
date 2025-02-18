@@ -22,7 +22,7 @@ func load_dialogues():
 func start_dialogue(dialogue_id):
 	if dialogues.has(dialogue_id):
 		current_dialogue = dialogues[dialogue_id]
-		print(" current dialogue ", current_dialogue)
+		# print(" current dialogue ", current_dialogue)
 		dialogue_started.emit(current_dialogue["text"], current_dialogue.get("options", []))
 
 # Elegir una opción del diálogo
@@ -39,7 +39,7 @@ func choose_option(option):
 func execute_action(action):
 	match action:
 		"start_game":
-			print("start mission emit")
+			#print("start mission emit")
 			start_mission.emit()
 		"cancel":
 			print("El jugador no quiere empezar.")

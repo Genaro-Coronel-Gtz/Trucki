@@ -1,14 +1,13 @@
 extends Control
 
-@onready var action_list := $ActionList
-@onready var assign_button := $AssignButton
-@onready var waiting_label := $WaitingLabel
+@onready var action_list := $Panel/ActionList
+@onready var assign_button := $Panel/AssignButton
+@onready var waiting_label := $Panel/WaitingLabel
 
 var selected_action: String = ""
 var current_event : InputEvent = null  # Variable para guardar el evento
 
 func _ready():
-	print(" Carga control settings ")
 	process_mode = Node.PROCESS_MODE_ALWAYS  # Permite que la UI funcione en pausa
 	# Obtener la referencia al InputManager desde la jerarquía de la escena
 	#input_manager = get_node("/root/HUD/InputManagerNode")  # Ruta al nodo que tiene el script InputManager.gd
