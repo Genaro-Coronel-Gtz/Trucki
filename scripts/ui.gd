@@ -13,6 +13,7 @@ extends Panel
 
 @onready var resumeBtn = $Resume
 @onready var exitBtn = $Quit
+@onready var controlsBtn = $Controls
 
 var selected_level = {}  # Diccionario vacío para almacenar el nivel seleccionado
 var is_game_paused: bool = false
@@ -23,8 +24,10 @@ func _render_buttons():
 
 func _ready():
 	# Crear botones dinámicamente en base a levels_data
+	print(" carga ready de ui")
 	resumeBtn.connect("pressed", Callable(self, "_resume_game"))
 	exitBtn.connect("pressed", Callable(self, "_quit_game"))
+	controlsBtn.connect("pressed", Callable(self, "_controls_game"))
 	GameState.game_paused.connect(_on_game_paused)
 	levels_container.add_theme_constant_override("separation", 20) # Agregar separacion entre botones
 	create_level_buttons()
@@ -55,7 +58,16 @@ func create_level_buttons():
 func _quit_game() -> void:
 	if is_inside_tree():
 		get_tree().quit
-
+		
+func _controls_game() -> void:
+	print(" controls game ")
+	GameState.change_state(GameEnums.HudState.CONTROLS_OPEN)
+	
+	#var control_settings_scene: PackedScene = preload("res://control_settings.tscn")  # Instanciamos la escena
+	#get_tree().change_scene_to_packed(control_settings_scene)
+	#get_tree().current_scene.add_child(control_settings_scene)  # La añadimos como un nodo hijo
+	#control_settings_scene.rect_position = Vector2(0, 0)  # Puedes posicionar la interfaz si es necesario
+	
 func _play_game(level):
 	if GameState:
 		GameState.change_state(GameState.HState.PLAYING)

@@ -48,6 +48,7 @@ func check_mission_start():
 	var start_pos = active_quest["start_pos"]
 	# Ajusta el radio de detección y si no ha iniciado la mision
 	if player_pos.distance_to(start_pos) < 20 and active_quest["state"] =="not_started":
+		print(" Dialog manager must be opened")
 		DialogueManager.start_dialogue("start_game")
 		#DialogueManager.start_dialogue("test_dialogue")
 

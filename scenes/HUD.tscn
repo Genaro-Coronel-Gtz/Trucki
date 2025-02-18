@@ -11,7 +11,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_0psi5"]
 
 [node name="HUD" type="Node2D"]
-visible = false
 script = ExtResource("1_aqfdd")
 
 [node name="DialogueUI" parent="." instance=ExtResource("2_ih8v5")]
@@ -19,8 +18,8 @@ script = ExtResource("1_aqfdd")
 [node name="DefautlView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1147.0
-offset_bottom = 649.0
+offset_right = 188.0
+offset_bottom = 116.0
 script = ExtResource("3_5afj5")
 
 [node name="HUD" type="CanvasLayer" parent="DefautlView"]
@@ -60,6 +59,14 @@ offset_bottom = 647.0
 theme = ExtResource("2_gst7q")
 script = ExtResource("3_h77hq")
 
+[node name="Controls" type="Button" parent="MainMenu/Panel"]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 553.0
+offset_right = 1105.0
+offset_bottom = 606.0
+text = "Controles"
+
 [node name="Label2" type="Label" parent="MainMenu/Panel"]
 layout_mode = 2
 offset_left = 667.0
@@ -70,17 +77,17 @@ text = "Descripcion del nivel seleccinado"
 
 [node name="Quit" type="Button" parent="MainMenu/Panel"]
 layout_mode = 2
-offset_left = 531.0
+offset_left = 497.0
 offset_top = 550.0
-offset_right = 884.0
+offset_right = 850.0
 offset_bottom = 608.0
 text = "Salir"
 
 [node name="Resume" type="Button" parent="MainMenu/Panel"]
 layout_mode = 0
-offset_left = 155.0
+offset_left = 111.0
 offset_top = 550.0
-offset_right = 496.0
+offset_right = 452.0
 offset_bottom = 608.0
 text = "Continuar"
 

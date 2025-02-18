@@ -30,6 +30,7 @@ func _ready():
 
 # Mostrar diálogo con opciones
 func display_dialogue(text, options):
+	print(" display dialogue ")
 	if dialogue_open or not can_trigger_dialogue:
 		return
 
@@ -83,7 +84,7 @@ func hide_dialogue():
 	dialogue_panel.visible = false
 	
 	# Inicia el cooldown para evitar que se vuelva a activar inmediatamente
-	cooldown_timer.start()
+	#cooldown_timer.start()
 
 func _reset_dialogue_trigger():
 	can_trigger_dialogue = true  # Permite volver a mostrar el diálogo
