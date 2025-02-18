@@ -10,6 +10,7 @@ func _ready():
 	# print(" carga ready de main")
 	generar_animalitos()
 
+
 func generar_animalitos():
 	for i in range(cantidad_animales):
 		var animal = animal_escena.instantiate()

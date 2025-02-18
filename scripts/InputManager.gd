@@ -13,7 +13,7 @@ var DEFAULT_BINDINGS := {
 	"ui_down": InputEventKey.new(),
 	"ui_show_map": InputEventKey.new(),
 	"ui_cancel": InputEventKey.new(),
-	#"ui_start": InputEventJoypadButton.new(),
+	"ui_start": InputEventJoypadButton.new(),
 }
 
 func _ready():
@@ -61,7 +61,10 @@ func serialize_event(event: InputEvent) -> String:
 		return "KEY_" + OS.get_keycode_string(event.physical_keycode)
 	elif event is InputEventJoypadButton:
 		return "JOY_BUTTON_" + str(event.button_index)
+	elif event is InputEventJoypadMotion:
+		return "JOY_AXIS_" + str(event.axis) + "_" + str(event.axis_value)
 	return ""
+
 
 # Deserializar String a InputEvent (Para cargar del .cfg)
 func deserialize_event(event_data: String) -> InputEvent:
@@ -73,7 +76,14 @@ func deserialize_event(event_data: String) -> InputEvent:
 		var event := InputEventJoypadButton.new()
 		event.button_index = event_data.split("_")[-1].to_int()
 		return event
+	elif event_data.begins_with("JOY_AXIS_"):
+		var parts = event_data.split("_")
+		var event := InputEventJoypadMotion.new()
+		event.axis = parts[2].to_int()
+		event.axis_value = parts[3].to_float()
+		return event
 	return null
+
 
 # 🔹 Verificar si el archivo de configuración existe y crearlo con valores por defecto si no
 func ensure_config_exists():
@@ -89,7 +99,7 @@ func ensure_config_exists():
 		DEFAULT_BINDINGS["ui_down"].physical_keycode = KEY_D
 		DEFAULT_BINDINGS["ui_cancel"].physical_keycode = KEY_E
 		DEFAULT_BINDINGS["ui_show_map"].physical_keycode = KEY_SPACE
-		#DEFAULT_BINDINGS["ui_start"].button_index = JOY_BUTTON_A
+		DEFAULT_BINDINGS["ui_start"].button_index = JOY_BUTTON_A
 		
 		for action in DEFAULT_BINDINGS.keys():
 			input_bindings[action] = serialize_event(DEFAULT_BINDINGS[action])

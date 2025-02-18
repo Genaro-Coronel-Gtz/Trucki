@@ -24,7 +24,7 @@ func pause_scene(pause: bool):
 	if not currentScene:
 		return
 	
-	#currentScene.visible = false
+	#$SceneContainer/Main.visible = false
 	if pause:
 		currentScene.process_mode = Node.PROCESS_MODE_DISABLED
 	else:

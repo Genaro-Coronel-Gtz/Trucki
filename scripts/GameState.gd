@@ -2,6 +2,7 @@ extends Node
 
 signal state_changed(new_state: int)
 signal game_paused(pause: bool)
+signal pause_
 
 var hud_scene : PackedScene
 var hud_instance : Node
@@ -27,3 +28,5 @@ func emit_pause_signal(new_state):
 			emit_signal("game_paused", true)
 		GameState.HState.RESUME:
 			emit_signal("game_paused", false)
+		#GameState.HState.MAIN_MENU:
+			

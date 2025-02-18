@@ -105,7 +105,6 @@ offset_bottom = 652.0
 theme = ExtResource("2_gst7q")
 
 [node name="PauseMenuCLayer" type="CanvasLayer" parent="PauseMenu"]
-visible = false
 
 [node name="Panel" type="Panel" parent="PauseMenu/PauseMenuCLayer"]
 offset_right = 1160.0
