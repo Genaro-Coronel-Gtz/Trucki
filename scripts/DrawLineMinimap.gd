@@ -1,7 +1,7 @@
 extends Line2D
 
 @onready var tilemap = $"../HighWayLayerMinimap"
-@onready var player = $"../../../../CharacterBody2D"
+@onready var player = $"../../../../Player"
 
 @export var start_texture : Texture
 @export var end_texture : Texture

@@ -7,9 +7,9 @@ var start_markers = []  # Lista para marcar zonas de inicio
 var end_markers = []  # Lista para marcar zonas de fin
 
 func _ready():
-	print("QuestSystem listo")
+	print("QuestSystem listo", self)
 
-# 🚀 Iniciar nuevas misiones con zonas marcadas en el mapa
+# Iniciar nuevas misiones con zonas marcadas en el mapa
 # Función para comenzar nuevas misiones
 var active_quests = []  # Lista de misiones activas
 
@@ -45,7 +45,7 @@ func start_new_quests(level):
 func complete_quest(mission_id):
 	if mission_id in active_quests:
 		active_quests[mission_id]["state"] = "completed"
-		print("✅ Misión completada:", active_quests[mission_id]["title"])
+		print(" Mision completada:", active_quests[mission_id]["title"])
 		quest_updated.emit(mission_id, "completed")
 		check_all_quests_completed()
 
@@ -59,6 +59,7 @@ func check_all_quests_completed():
 
 # 🔍 Marcar zonas en el mapa
 func mark_zone(pos, color):
+	print(" mark zone position: ", pos)
 	# print("mark zone", pos , color)
 	if pos == null:
 		print("⚠️ Intento de marcar una zona con posición nula")
@@ -68,6 +69,7 @@ func mark_zone(pos, color):
 	marker.color = color
 	marker.size = Vector2(32, 32)  # Ajusta el tamaño según el grid del TileMap
 	marker.position = pos
+	marker.z_index = 10
 	add_child(marker)
 
 	# Guardamos las referencias para borrarlos después

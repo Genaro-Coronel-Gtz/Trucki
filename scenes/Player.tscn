@@ -1,0 +1,127 @@
+[gd_scene load_steps=17 format=3 uid="uid://bhnnetmem57m2"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_a5mpd"]
+[ext_resource type="Script" path="res://scripts/animation_state_machine.gd" id="2_58f73"]
+[ext_resource type="Texture2D" uid="uid://bfm1cok72th3r" path="res://assets/characters/Truck.png" id="3_ufgx1"]
+[ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://assets/characters/Truck_04.png" id="4_sqh8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihom8"]
+size = Vector2(16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy1tb"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt00j"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf7fe"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crauf"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_361sn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy1tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt00j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf7fe")
+}],
+"loop": true,
+"name": &"drive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crauf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suiiu"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocik7"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo13h"]
+atlas = ExtResource("3_ufgx1")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dua2t"]
+atlas = ExtResource("4_sqh8c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1j25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suiiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocik7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo13h")
+}],
+"loop": true,
+"name": &"drive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dua2t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hivj0"]
+size = Vector2(20, 18)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 12
+script = ExtResource("1_a5mpd")
+
+[node name="AnimationStateMachine" type="Node" parent="."]
+script = ExtResource("2_58f73")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+rotation = -0.611038
+zoom = Vector2(2.5, 2.5)
+rotation_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ihom8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_361sn")
+animation = &"drive"
+
+[node name="TruckBox" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_k1j25")
+animation = &"drive"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hivj0")

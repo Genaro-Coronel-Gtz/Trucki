@@ -1,7 +1,6 @@
 extends Node
 
-@export var quest_system: Node  # Referencia al sistema de misiones
-@export var player: CharacterBody2D  # Referencia al jugador
+@onready var player: CharacterBody2D  = $"../Player" # Referencia al jugador
 
 # Datos de los niveles y misiones asociadas
 var levels = [
@@ -42,8 +41,8 @@ func load_level(index):
 	player.position = level_data["start_position"]
 
 	# Asigna misiones al QuestSystem
-	if quest_system:
-		quest_system.start_new_quests(level_data)
+	if QuestSystem:
+		QuestSystem.start_new_quests(level_data)
 
 func next_level():
 	current_level_index += 1

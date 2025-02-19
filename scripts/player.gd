@@ -1,18 +1,18 @@
 extends CharacterBody2D
 
-@onready var minimap_player = $"../CanvasLayer/SubViewportContainer/SubViewport/Sprite2D"
-@export var quest_system: Node
+@onready var minimap_player = $"../MiniMap/SubViewportContainer/SubViewport/Sprite2D"
 @onready var truck_animated = $AnimatedSprite2D
 @onready var truck_box_anim = $TruckBox
 
 @onready var area2d = $Area2D 
 @onready var animation_state_machine: Node = $AnimationStateMachine
+@onready var minimap_camera = $"../MiniMap/SubViewportContainer/SubViewport/Camera2D"
 
 var speed = 100
 var health = 100
 
 var counter = 0
-var minimap_camera
+
 var active_quest = null
 const POSITION_CAMERA_OFFSET_X = 50
 const INITIAL_POSITION: Vector2 = Vector2(100, 100)
@@ -20,12 +20,12 @@ const INITIAL_POSITION: Vector2 = Vector2(100, 100)
 const State = preload("res://scripts/game_enums.gd").State
 
 func assign_quest(quest_id):
-	if quest_system == null:
+	if QuestSystem == null:
 		print("QuestSystem no está asignado en el Player")
 		return
 	
 	# Iterar sobre las misiones activas
-	for quest in quest_system.active_quests:
+	for quest in QuestSystem.active_quests:
 		if quest["id"] == quest_id:
 			active_quest = quest
 			print("Nueva mision asignada:", active_quest["title"])
@@ -62,7 +62,7 @@ func check_mission_complete():
 
 	if player_pos.distance_to(end_pos) < 20:
 		print("-- Misión completada:", active_quest["title"])
-		quest_system.complete_quest(active_quest["id"])
+		QuestSystem.complete_quest(active_quest["id"])
 		active_quest = null  # Liberar misión activa
 		animation_state_machine.change_state(State.SINGLE)
 
@@ -75,7 +75,7 @@ func _ready():
 	
 	await get_tree().process_frame
 	
-	minimap_camera = get_node_or_null("../CanvasLayer/SubViewportContainer/SubViewport/Camera2D")
+	#minimap_camera = get_node_or_null("../MiniMap/SubViewportContainer/SubViewport/Camera2D")
 	if minimap_camera == null:
 		print("ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
 	assign_quest("m3")
