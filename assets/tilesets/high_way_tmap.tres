@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bar8wstnqhvwk"]
 
-[ext_resource type="Texture2D" uid="uid://cnhpsg566jofn" path="res://TileMapTruckDelivery.png" id="1_2nlqb"]
+[ext_resource type="Texture2D" uid="uid://cnhpsg566jofn" path="res://assets/backgrounds/TileMapTruckDelivery.png" id="1_b7qmt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1swch"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -9,7 +9,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tpkcv"]
-texture = ExtResource("1_2nlqb")
+texture = ExtResource("1_b7qmt")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrains_peering_bit/right_side = 2

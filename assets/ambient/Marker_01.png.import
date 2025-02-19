@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnhpsg566jofn"
-path="res://.godot/imported/TileMapTruckDelivery.png-dc37b9a4bfe04ee2448374929d9f2005.ctex"
+uid="uid://dvwche3s4n4u"
+path="res://.godot/imported/Marker_01.png-8ccee71abd9640755f224933a0851275.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMapTruckDelivery.png"
-dest_files=["res://.godot/imported/TileMapTruckDelivery.png-dc37b9a4bfe04ee2448374929d9f2005.ctex"]
+source_file="res://assets/ambient/Marker_01.png"
+dest_files=["res://.godot/imported/Marker_01.png-8ccee71abd9640755f224933a0851275.ctex"]
 
 [params]
 

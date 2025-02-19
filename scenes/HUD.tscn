@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2swpvn2eng1u" path="res://scenes/DialogueUI.tscn" id="2_ih8v5"]
 [ext_resource type="PackedScene" uid="uid://coja02dkgqrpe" path="res://scenes/control_settings.tscn" id="2_riq3x"]
 [ext_resource type="Script" path="res://scripts/defautl_view.gd" id="3_5afj5"]
-[ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://Truck_04.png" id="3_b50aq"]
+[ext_resource type="Texture2D" uid="uid://bbhfqvxf7ijlc" path="res://assets/characters/Truck_04.png" id="3_b50aq"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="3_h77hq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0psi5"]

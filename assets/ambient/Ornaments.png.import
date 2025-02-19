@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfm1cok72th3r"
-path="res://.godot/imported/Truck.png-2a3a0a0b0c7b3c730610fe773b475844.ctex"
+uid="uid://covioyrbhs446"
+path="res://.godot/imported/Ornaments.png-4230097360f7ed3376af0ecb74e54267.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Truck.png"
-dest_files=["res://.godot/imported/Truck.png-2a3a0a0b0c7b3c730610fe773b475844.ctex"]
+source_file="res://assets/ambient/Ornaments.png"
+dest_files=["res://.godot/imported/Ornaments.png-4230097360f7ed3376af0ecb74e54267.ctex"]
 
 [params]
 

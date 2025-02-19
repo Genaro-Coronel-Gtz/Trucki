@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qxapbg5ea5n8"
-path="res://.godot/imported/Arrow_01.png-6e415395ca11a2b713650d5ac1bc1537.ctex"
+uid="uid://b16rw4of0hcu5"
+path="res://.godot/imported/Marker_02.png-531b0c2022b232325cfd0c89a5ee3edc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arrow_01.png"
-dest_files=["res://.godot/imported/Arrow_01.png-6e415395ca11a2b713650d5ac1bc1537.ctex"]
+source_file="res://assets/ambient/Marker_02.png"
+dest_files=["res://.godot/imported/Marker_02.png-531b0c2022b232325cfd0c89a5ee3edc.ctex"]
 
 [params]
 

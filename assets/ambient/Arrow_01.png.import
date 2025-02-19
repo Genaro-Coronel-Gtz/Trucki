@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xd32d3pcqeus"
-path="res://.godot/imported/Pig_01.png-dccc38c1f743e04c20aedca42f2549b7.ctex"
+uid="uid://qxapbg5ea5n8"
+path="res://.godot/imported/Arrow_01.png-95488401e9d1b2cffba37c15faae3e45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pig_01.png"
-dest_files=["res://.godot/imported/Pig_01.png-dccc38c1f743e04c20aedca42f2549b7.ctex"]
+source_file="res://assets/ambient/Arrow_01.png"
+dest_files=["res://.godot/imported/Arrow_01.png-95488401e9d1b2cffba37c15faae3e45.ctex"]
 
 [params]
 

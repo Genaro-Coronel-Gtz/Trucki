@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1svrvst2hut"
-path="res://.godot/imported/Place.png-3712efbe174dddf8c19e331e2a41ac67.ctex"
+uid="uid://xd32d3pcqeus"
+path="res://.godot/imported/Pig_01.png-d3e6a463ba36130636e19ebd0fb9523f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Place.png"
-dest_files=["res://.godot/imported/Place.png-3712efbe174dddf8c19e331e2a41ac67.ctex"]
+source_file="res://assets/characters/Pig_01.png"
+dest_files=["res://.godot/imported/Pig_01.png-d3e6a463ba36130636e19ebd0fb9523f.ctex"]
 
 [params]
 
