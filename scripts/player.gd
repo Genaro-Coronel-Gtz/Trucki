@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animation_state_machine: Node = $AnimationStateMachine
 @onready var minimap_camera = $"../MiniMap/SubViewportContainer/SubViewport/Camera2D"
 
+
 var speed = 100
 var health = 100
 
@@ -28,6 +29,9 @@ func assign_quest(quest_id):
 	for quest in QuestSystem.active_quests:
 		if quest["id"] == quest_id:
 			active_quest = quest
+			QuestSystem._set_current_quest(quest)
+			position = active_quest["initial_player_position"]
+			# print(" quest ", quest)
 			print("Nueva mision asignada:", active_quest["title"])
 			return  # Terminar la función después de asignar la misión
 		 
@@ -45,7 +49,8 @@ func check_mission_start():
 		return
 
 	var player_pos = position
-	var start_pos = active_quest["start_pos"]
+	var start_pos = active_quest["start_position"]
+
 	# Ajusta el radio de detección y si no ha iniciado la mision
 	if player_pos.distance_to(start_pos) < 20 and active_quest["state"] =="not_started":
 		print(" Dialog manager must be opened")
@@ -58,7 +63,7 @@ func check_mission_complete():
 		return
 
 	var player_pos = position
-	var end_pos = active_quest["end_pos"]
+	var end_pos = active_quest["end_position"]
 
 	if player_pos.distance_to(end_pos) < 20:
 		print("-- Misión completada:", active_quest["title"])
@@ -71,19 +76,20 @@ func _ready():
 	area2d.body_entered.connect(_on_body_entered)
 	animation_state_machine.change_state(State.SINGLE)
 	
-	call_deferred("set_position", INITIAL_POSITION)
+	#call_deferred("set_position", INITIAL_POSITION)
 	
 	await get_tree().process_frame
-	
-	#minimap_camera = get_node_or_null("../MiniMap/SubViewportContainer/SubViewport/Camera2D")
-	if minimap_camera == null:
-		print("ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
 	assign_quest("m3")
 	
-func _on_body_entered(body):
-	if body.is_in_group("Animals"):
+	if minimap_camera == null:
+		print("ERROR: No se encontró la cámara del minimapa. Verifica la estructura de nodos.")
+	
+	
+func _on_body_entered(animalInstance):
+	if animalInstance.is_in_group("Animals"):
+		animalInstance._damage()
 		take_damage(5)
-		print(" Colision detectada con animal", body.animal_type)
+
 
 func take_damage(damage: int):
 	health -= damage
@@ -124,10 +130,13 @@ func _physics_process(delta):
 		
 	if counter == 150:
 		speed = 200
+		print(" emiting ")
+	
 
 	# Movimiento del jugador
 	direction = direction.normalized()
 	if direction.is_zero_approx():
+		
 		speed = 100
 		counter = 0
 	

@@ -99,3 +99,13 @@ la logica y lo que ya se tiene
 
 Para los nodos LevelManager, QuestSystem, PathLine, AnimalsContainer pueden ir
 en un nodo (unicamente para agruparlos) que se llame algo como GameControl
+
+================================
+Eliminar este comenario:
+	Avance en la funcionalidd de los animales, que crucen la calle segun initial_position y end_position
+	que vienen desde level_manager y quest_system
+	Se corrigieron algunos datos en level_manager y quest_system
+	
+	* Scripts que pueden quedar en autolaod ahora: GameSate, GameData y QuestSystem
+	  Para el InputManager y el DialogueManager, igual hace falta verificar como 
+	  podrian llamarse, sin que sean singleton (osea autoload, pero solo para inputmanager y dialoguemanager)

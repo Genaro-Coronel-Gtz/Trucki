@@ -17,10 +17,19 @@ var levels = [
 	{
 		"id": 2,
 		"name": "Cueva Oscura",
-		"start_position": Vector2(-50, 10),
-		"end_position": Vector2(650, -200),
 		"missions": [
-			{"id": "m3", "title": "Recolecta gemas", "description": "Encuentra 5 gemas en la cueva."},
+			{ 
+				"id": "m3", 
+				"title": "Recolecta gemas", 
+				"description": "Encuentra 5 gemas en la cueva.",
+				"initial_player_position": Vector2(-33, -273),
+				"obstacles": [
+					{ "init_position": Vector2(635, -10) , "end_position": Vector2(705, -10) },
+					{ "init_position": Vector2(0,0) , "end_position": Vector2(0,0) },
+				],
+				"start_position": Vector2(-50, 10),
+				"end_position": Vector2(650, -200),
+			},
 			{"id": "m4", "title": "Escapa antes del derrumbe", "description": "Llega a la salida antes de que se derrumbe."}
 		]
 	}
@@ -37,9 +46,6 @@ func load_level(index):
 		return
 
 	var level_data = levels[index]
-	# Mueve al jugador al punto de inicio
-	player.position = level_data["start_position"]
-
 	# Asigna misiones al QuestSystem
 	if QuestSystem:
 		QuestSystem.start_new_quests(level_data)
