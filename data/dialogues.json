@@ -5,8 +5,8 @@
 	  { "text": "ok!", "next": "", "action": "start_game" },
 	]
   },
-  "test_dialogue": {
-	"text": "El camion ha sido cargado"
+  "load_truck_first": {
+	"text": "Debes pasar a cargar el camion primero."
   },
   "intro_1": {
 	"text": "Bienvenido al juego. ¿Estás listo para la aventura?",

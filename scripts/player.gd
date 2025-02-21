@@ -61,15 +61,20 @@ func check_mission_start():
 func check_mission_complete():
 	if active_quest == null:
 		return
-
+		
 	var player_pos = position
 	var end_pos = active_quest["end_position"]
 
 	if player_pos.distance_to(end_pos) < 20:
-		print("-- Misión completada:", active_quest["title"])
-		QuestSystem.complete_quest(active_quest["id"])
-		active_quest = null  # Liberar misión activa
-		animation_state_machine.change_state(State.SINGLE)
+		if active_quest["state"] == "in_progress":
+			print("-- Misión completada:", active_quest["title"])
+			QuestSystem.complete_quest(active_quest["id"])
+			active_quest = null  # Liberar misión activa
+			animation_state_machine.change_state(State.SINGLE)
+		else:
+			DialogueManager.start_dialogue("load_truck_first")
+			print(" Llegara al return  en el else ")
+			return
 
 func _ready():
 	DialogueManager.start_mission.connect(_start_mission)

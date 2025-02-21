@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D  # Referencia al nodo de animación
 
-@export var speed := 2.5  # Velocidad del animal
+@export var speed := 3  # Velocidad del animal
 @export var animal_type: String = "Cerdo"
 
 var target_position: Vector2
@@ -32,8 +32,9 @@ func _process(delta):
 		_animation_direction()
 		move_and_slide() 
 	else:
-		queue_free()
 		velocity = Vector2.ZERO  # Detener al llegar
+		queue_free() # Eliminar de la escena
+		
 
 func move_to(new_target: Vector2):
 	target_position = new_target

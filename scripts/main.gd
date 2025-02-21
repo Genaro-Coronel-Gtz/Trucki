@@ -7,14 +7,19 @@ var quest: Dictionary = {}
 
 func _ready():
 	if QuestSystem:
-		QuestSystem.set_active_quest.connect(generar_animalitos)
-	#generar_animalitos()
-
-func generar_animalitos(quest):
-	#print(" quest ", quest["obstacles"][0]["end_position"])
+		QuestSystem.set_active_quest.connect(generate_obstacles)
 	
-	var target_position := Vector2(quest["obstacles"][0]["end_position"])
-	var init_position := Vector2(quest["obstacles"][0]["init_position"])
+func generate_obstacles(quest):
+	var obstacles = quest["obstacles"]
+	if obstacles.size() == 0:
+		return
+		
+	for i in range(obstacles.size()):
+		add_animals(obstacles[i]["init_position"], obstacles[i]["end_position"])
+
+func add_animals(init_pos: Vector2, end_pos: Vector2):
+	var init_position := Vector2(init_pos)
+	var target_position := Vector2(end_pos)
 	
 	for i in range(cantidad_animales):
 		
@@ -24,6 +29,5 @@ func generar_animalitos(quest):
 			randi_range(init_position.x, init_position.x + 30),
 			randi_range(init_position.y, init_position.y + 30)
 		)
-			#animal.position = quest["obstacles"][0]["initial_position"]
 		animal.move_to(target_position)
 		$AnimalsContainer.add_child(animal)

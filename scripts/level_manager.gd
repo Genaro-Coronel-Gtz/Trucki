@@ -6,7 +6,7 @@ extends Node
 var levels = [
 	{
 		"id": 1,
-		"name": "Bosque Encantado",
+		"name": "Reparto - Oficina de correos",
 		"start_position": Vector2(500, 200),
 		"end_position": Vector2(500, 1000),
 		"missions": [
@@ -16,7 +16,7 @@ var levels = [
 	},
 	{
 		"id": 2,
-		"name": "Cueva Oscura",
+		"name": "Reparto - Tienda de frutas",
 		"missions": [
 			{ 
 				"id": "m3", 

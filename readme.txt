@@ -109,3 +109,14 @@ Eliminar este comenario:
 	* Scripts que pueden quedar en autolaod ahora: GameSate, GameData y QuestSystem
 	  Para el InputManager y el DialogueManager, igual hace falta verificar como 
 	  podrian llamarse, sin que sean singleton (osea autoload, pero solo para inputmanager y dialoguemanager)
+
+Verificar el siguiente error que sale en consola:
+	
+	E 0:01:01:0717   player.gd:150 @ _physics_process(): Parameter "body->get_space()" is null.
+  <C++ Fuente>   servers/physics_2d/godot_physics_server_2d.cpp:997 @ body_test_motion()
+  <Rastreo de Pila>player.gd:150 @ _physics_process()
+Creo que sucede cuando ejecuta el move_and_slide del player
+pero como ya no esta en la escena, da ese problema ver como se puede solucionar
+
+Igual hay que agregar una señal para pausar el juego, osea desde el GameState, emitir una señal
+para que se pause la escena (es mas para que no sea visible) o al menos ese script 

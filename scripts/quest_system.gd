@@ -21,6 +21,7 @@ func _set_current_quest(quest):
 
 # Función para comenzar nuevas misiones
 func start_new_quests(level):
+	print(" Start new quests ", level)
 	active_quests.clear()  # Limpiar misiones previas
 	var missions = level["missions"]
 	for mission_data in missions:
@@ -42,17 +43,19 @@ func start_new_quests(level):
 			mark_zone(mission["end_position"], Color(0, 1, 0, 0.5))  # Zona de fin (verde)
 			active_quests.append(mission)
 		else:
-			print("Error: La misión no tiene la estructura correcta:", mission_data)
+			print("Error: La misión no tiene la estructura correcta:", mission_data["title"])
 	# print("Misiones cargadas: ", active_quests)
 	print("Misiones cargadas")
 	
 # 🏁 Completar misión
 func complete_quest(mission_id):
-	if mission_id in active_quests:
-		active_quests[mission_id]["state"] = "completed"
-		print(" Mision completada:", active_quests[mission_id]["title"])
-		quest_updated.emit(mission_id, "completed")
-		check_all_quests_completed()
+	#if mission_id in active_quests:
+	#active_quests[mission_id]["state"] = "completed"
+	#print("active_quests", active_quests)
+	#print(" Mision completada:", active_quests[mission_id]["title"])
+	quest_updated.emit(mission_id, "completed")
+	GameState.change_state(GameState.HState.MAIN_MENU)
+	#check_all_quests_completed()
 
 # ✅ Verifica si todas las misiones están completas
 func check_all_quests_completed():
@@ -64,7 +67,7 @@ func check_all_quests_completed():
 
 # 🔍 Marcar zonas en el mapa
 func mark_zone(pos, color):
-	# print(" mark zone position: ", pos)
+	print(" mark zone position: ", pos)
 	# print("mark zone", pos , color)
 	if pos == null:
 		print("⚠️ Intento de marcar una zona con posición nula")
