@@ -30,9 +30,13 @@ Tratar de avanzar el 11 de Frebrero de 2025
 * Crear bien la interfaz grafica para el juego (HUD) -> Ok
 
 -------------------------------------------------------------------------------------------
+* Corregir Levelmanager y SystemQuest para que funcionen correctamente
+  agregar un script autoload que se llamara utils o helpers para 
+  poder usar funciones genericas como read_json, etc...
+
+-------------------------------------------------------------------------------------------
 * Crear sistema de dialogos Generico (Ver si se puede exportar como plugin)
 * Crear dialogos del juego 
-
 
 * Implementar logica para guardar en menu pausa antes de salir a menu principal:
 	En menu pausa, si el usuario da click en el boton menu principal
@@ -41,13 +45,6 @@ Tratar de avanzar el 11 de Frebrero de 2025
 		no se le dejara avanzar al menu principal (no hacer nada, solo cerrar dialogo)
 	-> Si acepta:
 		Guardar el estado del juego, nivel, recompenzas, etc... y pasar a menu principal
-----------------------------------------------------------------------------------------
-
-* Verificar si la escena high_way_tmap se puede cargar directamente (arrastrando ) 
-dentro de la misma escena que HUD, Como se hizo con Dialogue UI, y si se puede
-como seria para poder mter tambien el player en una escena, ver si no habira problemas con que
-una escena este dentro de otra escena que esta dentro de otra escena.
-
 ----------------------------------------------------------------------------------------
 
 * Agregar sonidos al juego (animales, carro y musica de fondo ) en 8 bits, talvez con sonic pi
@@ -119,4 +116,5 @@ Creo que sucede cuando ejecuta el move_and_slide del player
 pero como ya no esta en la escena, da ese problema ver como se puede solucionar
 
 Igual hay que agregar una señal para pausar el juego, osea desde el GameState, emitir una señal
-para que se pause la escena (es mas para que no sea visible) o al menos ese script 
+para que se pause la escena (ver si no ya se pausa con el pause_schene del hud, 
+pero tambien ha y que ver que no sea visible) o al menos ese script 

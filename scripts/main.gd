@@ -15,7 +15,7 @@ func generate_obstacles(quest):
 		return
 		
 	for i in range(obstacles.size()):
-		add_animals(obstacles[i]["init_position"], obstacles[i]["end_position"])
+		add_animals(Utils.coords_tovector2(obstacles[i]["init_position"]), Utils.coords_to_vector2(obstacles[i]["end_position"]))
 
 func add_animals(init_pos: Vector2, end_pos: Vector2):
 	var init_position := Vector2(init_pos)

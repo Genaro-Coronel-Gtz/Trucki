@@ -21,6 +21,7 @@ GameData="*res://scripts/GameData.gd"
 DialogueManager="*res://scripts/DialogueManager.gd"
 InputManager="*res://scripts/InputManager.gd"
 QuestSystem="*res://scripts/quest_system.gd"
+Utils="*res://autoload/utils.gd"
 
 [input]
 

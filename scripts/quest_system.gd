@@ -21,7 +21,7 @@ func _set_current_quest(quest):
 
 # Función para comenzar nuevas misiones
 func start_new_quests(level):
-	print(" Start new quests ", level)
+	#print(" Start new quests ", level)
 	active_quests.clear()  # Limpiar misiones previas
 	var missions = level["missions"]
 	for mission_data in missions:
@@ -33,11 +33,12 @@ func start_new_quests(level):
 				"title": mission_data["title"],
 				"description": mission_data["description"],
 				"state": "not_started",
-				"start_position": mission_data["start_position"],  # Esto podría venir del nivel si lo necesitas
-				"end_position": mission_data["end_position"],  # Esto también podría ser asignado desde el nivel
-				"initial_player_position": mission_data["initial_player_position"],
+				"start_position": Utils.coords_to_vector2(mission_data["start_position"]),  # Esto podría venir del nivel si lo necesitas
+				"end_position": Utils.coords_to_vector2(mission_data["end_position"]),  # Esto también podría ser asignado desde el nivel
+				"initial_player_position": Utils.coords_to_vector2(mission_data["initial_player_position"]),
 				"obstacles": mission_data["obstacles"]
 			}
+			
 			# Llamar a mark_zone para marcar las zonas
 			mark_zone(mission["start_position"], Color(1, 0.5, 0.7, 0.5))  # Zona de inicio (rosado)
 			mark_zone(mission["end_position"], Color(0, 1, 0, 0.5))  # Zona de fin (verde)

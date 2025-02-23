@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1,
+		"name": "Reparto - Oficina de correos",
+		"start_position": "500, 200",
+		"end_position": "500, 1000",
+		"missions": [
+			{"id": "m1", "title": "Encuentra el amuleto", "description": "Busca el amuleto escondido."},
+			{"id": "m2", "title": "Derrota al guardián", "description": "Elimina al guardián del bosque."}
+		]
+	},
+	{
+		"id": 2,
+		"name": "Reparto - Tienda de frutas",
+		"missions": [
+			{ 
+				"id": "m3", 
+				"title": "Recolecta gemas", 
+				"description": "Encuentra 5 gemas en la cueva.",
+				"initial_player_position": "-33, -273",
+				"obstacles": [
+					{ "init_position": "635, -10" , "end_position": "705, -10" },
+					{ "init_position": "0,0" , "end_position": "0,0" },
+				],
+				"start_position": "-50, 10",
+				"end_position": "650, -200",
+			},
+			{"id": "m4", "title": "Escapa antes del derrumbe", "description": "Llega a la salida antes de que se derrumbe."}
+		]
+	}
+]
